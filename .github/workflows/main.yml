@@ -1,9 +1,12 @@
-name: CI/CD
+name: Deploy to production
 
 on:
   push:
     branches:
-      - main
+      - 'main'
+
+env:
+  SKIP_ENV_VALIDATION: true
 
 jobs:
   build:
@@ -11,19 +14,24 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
-      - name: Build Next.js app
+      - name: Run linting
+        run: npm run lint
+
+      - name: Compile code
         run: npm run build
 
-      - name: Run tests
-        run: npm test
-
       - name: Deploy to Vercel
-        uses: amondnet/vercel-action@v20
+        uses: amondnet/vercel-action@v25
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}

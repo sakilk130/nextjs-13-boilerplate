@@ -30,6 +30,26 @@ const config = {
         '@typescript-eslint/consistent-type-imports': 'off',
       },
     },
+    // Configuration for testing
+    {
+      files: ['**/*.test.ts', '**/*.test.tsx'],
+      plugins: ['jest', 'jest-formatting', 'testing-library', 'jest-dom'],
+      extends: [
+        'plugin:jest/recommended',
+        'plugin:jest-formatting/recommended',
+        'plugin:testing-library/react',
+        'plugin:jest-dom/recommended',
+      ],
+    },
+    // Configuration for e2e testing (Cypress)
+    {
+      files: ['cypress/**/*.ts'],
+      plugins: ['cypress'],
+      extends: ['plugin:cypress/recommended'],
+      parserOptions: {
+        project: './cypress/tsconfig.json',
+      },
+    },
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {

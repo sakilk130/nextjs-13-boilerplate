@@ -1,7 +1,9 @@
 {
   "name": "nextjs-13-boilerplate",
   "version": "0.0.1",
+  "author": "Sakil Khan",
   "private": true,
+  "license": "MIT",
   "engines": {
     "node": ">=18",
     "npm": ">=9",

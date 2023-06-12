@@ -19,6 +19,7 @@ const customJestConfig = {
     '!./src/**/_*.{js,jsx,ts,tsx}',
     '!./src/**/*.stories.{js,jsx,ts,tsx}',
     '!./src/components/**/index.{js,jsx,ts,tsx}',
+    '!./src/app/layout.tsx',
     '!**/*.d.ts',
     '!**/node_modules/**',
   ],

@@ -28,6 +28,20 @@ const config = {
         '@typescript-eslint/restrict-plus-operands': 'off',
         '@typescript-eslint/restrict-template-expressions': 'off',
         '@typescript-eslint/consistent-type-imports': 'off',
+        'import/order': [
+          'warn',
+          {
+            'newlines-between': 'always',
+            pathGroups: [
+              {
+                group: 'external',
+                pattern: '@/**',
+                position: 'after',
+              },
+            ],
+          },
+        ],
+        'no-console': 'warn',
       },
     },
     // Configuration for testing
